@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PRN232.LMS.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1c802d6bb12017e5bb9f84f920fc2485ef7ec361")]
 [assembly: System.Reflection.AssemblyProductAttribute("PRN232.LMS.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PRN232.LMS.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -40,7 +40,10 @@ builder.Services.AddScoped<IEnrollmentService, EnrollmentService>();
 // ──────────────────────────────
 // Controllers
 // ──────────────────────────────
-builder.Services.AddControllers()
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<PRN232.LMS.API.Filters.DataShapingFilter>();
+})
     .AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.DefaultIgnoreCondition =

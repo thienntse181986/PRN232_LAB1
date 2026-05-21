@@ -28,3 +28,4 @@ E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.Services\obj\
 E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.Services\obj\Debug\net8.0\refint\PRN232.LMS.Services.dll
 E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.Services\obj\Debug\net8.0\PRN232.LMS.Services.pdb
 E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.Services\obj\Debug\net8.0\ref\PRN232.LMS.Services.dll
+E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.Services\obj\Debug\net8.0\PRN232.LMS.Services.sourcelink.json

@@ -26,3 +26,4 @@ E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.Repositories\
 E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.Repositories\obj\Debug\net8.0\PRN232.LMS.Repositories.pdb
 E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.Repositories\obj\Debug\net8.0\PRN232.LMS.Repositories.genruntimeconfig.cache
 E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.Repositories\obj\Debug\net8.0\ref\PRN232.LMS.Repositories.dll
+E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.Repositories\obj\Debug\net8.0\PRN232.LMS.Repositories.sourcelink.json
