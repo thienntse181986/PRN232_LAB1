@@ -43,12 +43,7 @@ builder.Services.AddScoped<IEnrollmentService, EnrollmentService>();
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add<PRN232.LMS.API.Filters.DataShapingFilter>();
-})
-    .AddJsonOptions(options =>
-    {
-        options.JsonSerializerOptions.DefaultIgnoreCondition =
-            System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
-    });
+});
 
 // ──────────────────────────────
 // Swagger / OpenAPI

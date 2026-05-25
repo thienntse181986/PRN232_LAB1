@@ -7,8 +7,8 @@
         <member name="M:PRN232.LMS.API.Controllers.CoursesController.GetAll(PRN232.LMS.Services.Models.Request.QueryParameters)">
             <summary>Get all courses with optional search, sort, paging, and expand (semester, enrollment)</summary>
         </member>
-        <member name="M:PRN232.LMS.API.Controllers.CoursesController.GetById(System.Int32)">
-            <summary>Get course by ID (includes semester and enrollments)</summary>
+        <member name="M:PRN232.LMS.API.Controllers.CoursesController.GetById(System.Int32,System.String)">
+            <summary>Get course by ID with optional expand (semester, enrollment)</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.CoursesController.Create(PRN232.LMS.Services.Models.Request.CourseCreateRequest)">
             <summary>Create a new course</summary>
@@ -22,8 +22,8 @@
         <member name="M:PRN232.LMS.API.Controllers.EnrollmentsController.GetAll(PRN232.LMS.Services.Models.Request.QueryParameters)">
             <summary>Get all enrollments with optional search, sort, paging, and expand (student, course)</summary>
         </member>
-        <member name="M:PRN232.LMS.API.Controllers.EnrollmentsController.GetById(System.Int32)">
-            <summary>Get enrollment by ID (includes student and course details)</summary>
+        <member name="M:PRN232.LMS.API.Controllers.EnrollmentsController.GetById(System.Int32,System.String)">
+            <summary>Get enrollment by ID with optional expand (student, course)</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.EnrollmentsController.Create(PRN232.LMS.Services.Models.Request.EnrollmentCreateRequest)">
             <summary>Create a new enrollment</summary>
@@ -37,8 +37,8 @@
         <member name="M:PRN232.LMS.API.Controllers.SemestersController.GetAll(PRN232.LMS.Services.Models.Request.QueryParameters)">
             <summary>Get all semesters with optional search, sort, paging, and expand</summary>
         </member>
-        <member name="M:PRN232.LMS.API.Controllers.SemestersController.GetById(System.Int32)">
-            <summary>Get semester by ID (includes courses)</summary>
+        <member name="M:PRN232.LMS.API.Controllers.SemestersController.GetById(System.Int32,System.String)">
+            <summary>Get semester by ID with optional expand (course)</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.SemestersController.Create(PRN232.LMS.Services.Models.Request.SemesterCreateRequest)">
             <summary>Create a new semester</summary>
@@ -52,8 +52,8 @@
         <member name="M:PRN232.LMS.API.Controllers.StudentsController.GetAll(PRN232.LMS.Services.Models.Request.QueryParameters)">
             <summary>Get all students with optional search, sort, paging, fields, and expand</summary>
         </member>
-        <member name="M:PRN232.LMS.API.Controllers.StudentsController.GetById(System.Int32)">
-            <summary>Get student by ID (includes enrollment details)</summary>
+        <member name="M:PRN232.LMS.API.Controllers.StudentsController.GetById(System.Int32,System.String)">
+            <summary>Get student by ID with optional expand (enrollment)</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.StudentsController.Create(PRN232.LMS.Services.Models.Request.StudentCreateRequest)">
             <summary>Create a new student</summary>

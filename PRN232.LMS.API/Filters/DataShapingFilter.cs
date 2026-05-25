@@ -132,17 +132,32 @@ public class DataShapingFilter : ActionFilterAttribute
         var type = obj.GetType();
         var properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
+        // 1. Loop through all properties of the original DTO object
+        foreach (var prop in properties)
+        {
+            var camelCaseName = JsonNamingPolicy.CamelCase.ConvertName(prop.Name);
+            
+            // Check if this property was requested in the fields parameter (case-insensitive)
+            var isRequested = fields.Any(f => string.Equals(f, prop.Name, StringComparison.OrdinalIgnoreCase));
+            if (isRequested)
+            {
+                shapedObject[camelCaseName] = prop.GetValue(obj);
+            }
+            else
+            {
+                // If not requested, set to null
+                shapedObject[camelCaseName] = null;
+            }
+        }
+
+        // 2. Also, if there are custom fields requested that are NOT properties of the DTO, add them as null
         foreach (var field in fields)
         {
-            // Find property case-insensitively
-            var prop = properties.FirstOrDefault(p => string.Equals(p.Name, field, StringComparison.OrdinalIgnoreCase));
-            if (prop != null)
+            var exists = properties.Any(p => string.Equals(p.Name, field, StringComparison.OrdinalIgnoreCase));
+            if (!exists)
             {
-                var value = prop.GetValue(obj);
-                
-                // Convert key to camelCase for standard JSON serialization policy
-                var camelCaseName = JsonNamingPolicy.CamelCase.ConvertName(prop.Name);
-                shapedObject[camelCaseName] = value;
+                var camelCaseName = JsonNamingPolicy.CamelCase.ConvertName(field);
+                shapedObject[camelCaseName] = null;
             }
         }
 

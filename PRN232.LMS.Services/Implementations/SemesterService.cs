@@ -37,11 +37,21 @@ public class SemesterService : ISemesterService
         });
     }
 
-    public async Task<ApiResponse<SemesterResponse>> GetByIdAsync(int id)
+    public async Task<ApiResponse<SemesterResponse>> GetByIdAsync(int id, string? expand = null)
     {
-        var entity = await _unitOfWork.Semesters.GetByIdWithCoursesAsync(id);
+        bool expandCourses = expand?.Contains("course", StringComparison.OrdinalIgnoreCase) == true;
+        Semester? entity;
+        if (expandCourses)
+        {
+            entity = await _unitOfWork.Semesters.GetByIdWithCoursesAsync(id);
+        }
+        else
+        {
+            entity = await _unitOfWork.Semesters.GetByIdAsync(id);
+        }
+
         if (entity is null) return ApiResponse<SemesterResponse>.Fail($"Semester with ID {id} not found.");
-        return ApiResponse<SemesterResponse>.Ok(MapToResponse(entity, true));
+        return ApiResponse<SemesterResponse>.Ok(MapToResponse(entity, expandCourses));
     }
 
     public async Task<ApiResponse<SemesterResponse>> CreateAsync(SemesterCreateRequest request)

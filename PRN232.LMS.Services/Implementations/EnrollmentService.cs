@@ -48,11 +48,23 @@ public class EnrollmentService : IEnrollmentService
         });
     }
 
-    public async Task<ApiResponse<EnrollmentResponse>> GetByIdAsync(int id)
+    public async Task<ApiResponse<EnrollmentResponse>> GetByIdAsync(int id, string? expand = null)
     {
-        var entity = await _unitOfWork.Enrollments.GetByIdWithDetailsAsync(id);
+        bool expandStudent = expand?.Contains("student", StringComparison.OrdinalIgnoreCase) == true;
+        bool expandCourse  = expand?.Contains("course",  StringComparison.OrdinalIgnoreCase) == true;
+
+        Enrollment? entity;
+        if (expandStudent || expandCourse)
+        {
+            entity = await _unitOfWork.Enrollments.GetByIdWithDetailsAsync(id);
+        }
+        else
+        {
+            entity = await _unitOfWork.Enrollments.GetByIdAsync(id);
+        }
+
         if (entity is null) return ApiResponse<EnrollmentResponse>.Fail($"Enrollment with ID {id} not found.");
-        return ApiResponse<EnrollmentResponse>.Ok(MapToResponse(entity, true, true));
+        return ApiResponse<EnrollmentResponse>.Ok(MapToResponse(entity, expandStudent, expandCourse));
     }
 
     public async Task<ApiResponse<EnrollmentResponse>> CreateAsync(EnrollmentCreateRequest request)
@@ -123,7 +135,14 @@ public class EnrollmentService : IEnrollmentService
             CourseId = e.Course.CourseId,
             CourseName = e.Course.CourseName,
             SemesterId = e.Course.SemesterId,
-            SemesterName = e.Course.Semester?.SemesterName
+            SemesterName = e.Course.Semester?.SemesterName,
+            Semester = e.Course.Semester is not null ? new SemesterResponse
+            {
+                SemesterId = e.Course.Semester.SemesterId,
+                SemesterName = e.Course.Semester.SemesterName,
+                StartDate = e.Course.Semester.StartDate,
+                EndDate = e.Course.Semester.EndDate
+            } : null
         } : null
     };
 }

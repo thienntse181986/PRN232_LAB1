@@ -43,11 +43,23 @@ public class CourseService : ICourseService
         });
     }
 
-    public async Task<ApiResponse<CourseResponse>> GetByIdAsync(int id)
+    public async Task<ApiResponse<CourseResponse>> GetByIdAsync(int id, string? expand = null)
     {
-        var entity = await _unitOfWork.Courses.GetByIdWithDetailsAsync(id);
+        bool expandSemester = expand?.Contains("semester", StringComparison.OrdinalIgnoreCase) == true;
+        bool expandEnrollments = expand?.Contains("enrollment", StringComparison.OrdinalIgnoreCase) == true;
+
+        Course? entity;
+        if (expandSemester || expandEnrollments)
+        {
+            entity = await _unitOfWork.Courses.GetByIdWithDetailsAsync(id);
+        }
+        else
+        {
+            entity = await _unitOfWork.Courses.GetByIdAsync(id);
+        }
+
         if (entity is null) return ApiResponse<CourseResponse>.Fail($"Course with ID {id} not found.");
-        return ApiResponse<CourseResponse>.Ok(MapToResponse(entity, true, true));
+        return ApiResponse<CourseResponse>.Ok(MapToResponse(entity, expandSemester, expandEnrollments));
     }
 
     public async Task<ApiResponse<CourseResponse>> CreateAsync(CourseCreateRequest request)
@@ -95,6 +107,13 @@ public class CourseService : ICourseService
         CourseName = c.CourseName,
         SemesterId = c.SemesterId,
         SemesterName = includeSemester ? c.Semester?.SemesterName : null,
+        Semester = includeSemester && c.Semester is not null ? new SemesterResponse
+        {
+            SemesterId = c.Semester.SemesterId,
+            SemesterName = c.Semester.SemesterName,
+            StartDate = c.Semester.StartDate,
+            EndDate = c.Semester.EndDate
+        } : null,
         Enrollments = includeEnrollments && c.Enrollments?.Any() == true
             ? c.Enrollments.Select(e => new EnrollmentResponse
             {

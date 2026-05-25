@@ -15,6 +15,7 @@ public class CourseResponse
     public string CourseName { get; set; } = string.Empty;
     public int SemesterId { get; set; }
     public string? SemesterName { get; set; }
+    public SemesterResponse? Semester { get; set; }
     public IEnumerable<EnrollmentResponse>? Enrollments { get; set; }
 }
 

@@ -19,13 +19,13 @@ public class SemestersController : ControllerBase
     public async Task<IActionResult> GetAll([FromQuery] QueryParameters query)
         => Ok(await _service.GetAllAsync(query));
 
-    /// <summary>Get semester by ID (includes courses)</summary>
+    /// <summary>Get semester by ID with optional expand (course)</summary>
     [HttpGet("{id:int}")]
     [ProducesResponseType(typeof(ApiResponse<SemesterResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<SemesterResponse>), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetById(int id)
+    public async Task<IActionResult> GetById(int id, [FromQuery] string? expand = null)
     {
-        var result = await _service.GetByIdAsync(id);
+        var result = await _service.GetByIdAsync(id, expand);
         return result.Success ? Ok(result) : NotFound(result);
     }
 

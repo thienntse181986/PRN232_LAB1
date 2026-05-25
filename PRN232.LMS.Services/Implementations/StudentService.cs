@@ -51,12 +51,22 @@ public class StudentService : IStudentService
         });
     }
 
-    public async Task<ApiResponse<StudentResponse>> GetByIdAsync(int id)
+    public async Task<ApiResponse<StudentResponse>> GetByIdAsync(int id, string? expand = null)
     {
-        var student = await _unitOfWork.Students.GetByIdWithEnrollmentsAsync(id);
+        bool expandEnrollments = expand?.Contains("enrollment", StringComparison.OrdinalIgnoreCase) == true;
+        Student? student;
+        if (expandEnrollments)
+        {
+            student = await _unitOfWork.Students.GetByIdWithEnrollmentsAsync(id);
+        }
+        else
+        {
+            student = await _unitOfWork.Students.GetByIdAsync(id);
+        }
+
         if (student is null)
             return ApiResponse<StudentResponse>.Fail($"Student with ID {id} not found.");
-        return ApiResponse<StudentResponse>.Ok(MapToResponse(student, true));
+        return ApiResponse<StudentResponse>.Ok(MapToResponse(student, expandEnrollments));
     }
 
     public async Task<ApiResponse<StudentResponse>> CreateAsync(StudentCreateRequest request)
@@ -126,7 +136,14 @@ public class StudentService : IStudentService
                         CourseId = e.Course.CourseId,
                         CourseName = e.Course.CourseName,
                         SemesterId = e.Course.SemesterId,
-                        SemesterName = e.Course.Semester?.SemesterName
+                        SemesterName = e.Course.Semester?.SemesterName,
+                        Semester = e.Course.Semester is not null ? new SemesterResponse
+                        {
+                            SemesterId = e.Course.Semester.SemesterId,
+                            SemesterName = e.Course.Semester.SemesterName,
+                            StartDate = e.Course.Semester.StartDate,
+                            EndDate = e.Course.Semester.EndDate
+                        } : null
                     } : null
                 })
                 : null

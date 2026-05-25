@@ -23,13 +23,13 @@ public class StudentsController : ControllerBase
         return Ok(result);
     }
 
-    /// <summary>Get student by ID (includes enrollment details)</summary>
+    /// <summary>Get student by ID with optional expand (enrollment)</summary>
     [HttpGet("{id:int}")]
     [ProducesResponseType(typeof(ApiResponse<StudentResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<StudentResponse>), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetById(int id)
+    public async Task<IActionResult> GetById(int id, [FromQuery] string? expand = null)
     {
-        var result = await _service.GetByIdAsync(id);
+        var result = await _service.GetByIdAsync(id, expand);
         return result.Success ? Ok(result) : NotFound(result);
     }
 
