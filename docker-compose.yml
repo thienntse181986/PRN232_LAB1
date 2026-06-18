@@ -22,6 +22,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=http://+:8080
       - ConnectionStrings__DefaultConnection=Server=db;Database=LMS;User Id=sa;Password=StrongPassword123!;TrustServerCertificate=True;MultipleActiveResultSets=true
+      - JWT_SECRET=YourSuperSecretJWTKey12345678901234567890
     ports:
       - "8080:8080"
     depends_on:

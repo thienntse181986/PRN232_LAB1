@@ -9,6 +9,7 @@ public interface IUnitOfWork : IDisposable
     ISubjectRepository Subjects { get; }
     ISemesterRepository Semesters { get; }
     IEnrollmentRepository Enrollments { get; }
+    IUserRepository Users { get; }
 
     Task<int> SaveChangesAsync();
     

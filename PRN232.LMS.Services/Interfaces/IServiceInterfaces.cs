@@ -19,6 +19,7 @@ public interface ICourseService
     Task<ApiResponse<CourseResponse>> CreateAsync(CourseCreateRequest request);
     Task<ApiResponse<CourseResponse>> UpdateAsync(int id, CourseUpdateRequest request);
     Task<ApiResponse<bool>> DeleteAsync(int id);
+    Task<ApiResponse<IEnumerable<StudentResponse>>> GetStudentsByCourseIdAsync(int courseId);
 }
 
 public interface ISubjectService

@@ -15,6 +15,14 @@ public class DataShapingFilter : ActionFilterAttribute
 
         Console.WriteLine($"\n=== [DataShapingFilter] Start processing request: {context.HttpContext.Request.Path}{context.HttpContext.Request.QueryString} ===");
 
+        // Skip data shaping for XML Accept header to ensure XmlSerializer compatibility
+        var acceptHeader = context.HttpContext.Request.Headers.Accept.ToString();
+        if (acceptHeader.Contains("application/xml", StringComparison.OrdinalIgnoreCase))
+        {
+            Console.WriteLine("[DataShapingFilter] Accept header contains application/xml. Skipping data shaping to ensure XML compatibility.");
+            return;
+        }
+
         // Only process successful ObjectResult responses
         if (context.Result is not ObjectResult objectResult)
         {

@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "9gdVckyx5nc=",
+  "dgSpecHash": "BqZp7D/eWN8=",
   "success": true,
   "projectFilePath": "E:\\FPTU\\Ky8\\PRN232\\LAB_1\\LAB1_NguyenTrongThien_SE181986\\PRN232.LMS.Repositories\\PRN232.LMS.Repositories.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\my PC\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\my PC\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
+    "C:\\Users\\my PC\\.nuget\\packages\\bcrypt.net-next\\4.2.0\\bcrypt.net-next.4.2.0.nupkg.sha512",
     "C:\\Users\\my PC\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\my PC\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\my PC\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",

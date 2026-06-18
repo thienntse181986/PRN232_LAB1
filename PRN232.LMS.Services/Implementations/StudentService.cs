@@ -76,6 +76,7 @@ public class StudentService : IStudentService
 
         var entity = new Student
         {
+            StudentCode = request.StudentCode,
             FullName = request.FullName,
             Email = request.Email,
             DateOfBirth = request.DateOfBirth
@@ -94,6 +95,7 @@ public class StudentService : IStudentService
         if (await _unitOfWork.Students.EmailExistsAsync(request.Email, id))
             return ApiResponse<StudentResponse>.Fail($"Email '{request.Email}' already exists.");
 
+        entity.StudentCode = request.StudentCode;
         entity.FullName = request.FullName;
         entity.Email = request.Email;
         entity.DateOfBirth = request.DateOfBirth;
@@ -120,6 +122,7 @@ public class StudentService : IStudentService
         return new StudentResponse
         {
             StudentId = s.StudentId,
+            StudentCode = s.StudentCode,
             FullName = s.FullName,
             Email = s.Email,
             DateOfBirth = s.DateOfBirth,

@@ -14,6 +14,7 @@ public class UnitOfWork : IUnitOfWork
     public ISubjectRepository Subjects { get; }
     public ISemesterRepository Semesters { get; }
     public IEnrollmentRepository Enrollments { get; }
+    public IUserRepository Users { get; }
 
     public UnitOfWork(
         LmsDbContext context,
@@ -21,7 +22,8 @@ public class UnitOfWork : IUnitOfWork
         ICourseRepository courseRepository,
         ISubjectRepository subjectRepository,
         ISemesterRepository semesterRepository,
-        IEnrollmentRepository enrollmentRepository)
+        IEnrollmentRepository enrollmentRepository,
+        IUserRepository userRepository)
     {
         _context = context;
         Students = studentRepository;
@@ -29,6 +31,7 @@ public class UnitOfWork : IUnitOfWork
         Subjects = subjectRepository;
         Semesters = semesterRepository;
         Enrollments = enrollmentRepository;
+        Users = userRepository;
     }
 
     public async Task<int> SaveChangesAsync()

@@ -4,20 +4,35 @@
         <name>PRN232.LMS.API</name>
     </assembly>
     <members>
+        <member name="M:PRN232.LMS.API.Controllers.AuthController.Login(PRN232.LMS.Services.Models.Request.LoginRequest)">
+            <summary>Logs in a user and returns JWT access and refresh tokens</summary>
+            <param name="request">Login request credentials</param>
+            <response code="200">User authenticated successfully</response>
+            <response code="400">Invalid username or password, or model validation failed</response>
+        </member>
+        <member name="M:PRN232.LMS.API.Controllers.AuthController.RefreshToken(PRN232.LMS.Services.Models.Request.RefreshTokenRequest)">
+            <summary>Refreshes an expired JWT access token using a valid refresh token</summary>
+            <param name="request">Refresh token request containing old access token and refresh token</param>
+            <response code="200">Token refreshed successfully</response>
+            <response code="400">Invalid or expired refresh token, or model validation failed</response>
+        </member>
         <member name="M:PRN232.LMS.API.Controllers.CoursesController.GetAll(PRN232.LMS.Services.Models.Request.QueryParameters)">
             <summary>Get all courses with optional search, sort, paging, and expand (semester, enrollment)</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.CoursesController.GetById(System.Int32,System.String)">
             <summary>Get course by ID with optional expand (semester, enrollment)</summary>
         </member>
+        <member name="M:PRN232.LMS.API.Controllers.CoursesController.GetStudentsByCourse(System.Int32)">
+            <summary>Get students enrolled in a specific course (Nested Resource)</summary>
+        </member>
         <member name="M:PRN232.LMS.API.Controllers.CoursesController.Create(PRN232.LMS.Services.Models.Request.CourseCreateRequest)">
-            <summary>Create a new course</summary>
+            <summary>Create a new course (Admin Only)</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.CoursesController.Update(System.Int32,PRN232.LMS.Services.Models.Request.CourseUpdateRequest)">
-            <summary>Update course by ID</summary>
+            <summary>Update course by ID (Admin Only)</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.CoursesController.Delete(System.Int32)">
-            <summary>Delete course by ID</summary>
+            <summary>Delete course by ID (Admin Only)</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.EnrollmentsController.GetAll(PRN232.LMS.Services.Models.Request.QueryParameters)">
             <summary>Get all enrollments with optional search, sort, paging, and expand (student, course)</summary>
@@ -25,29 +40,29 @@
         <member name="M:PRN232.LMS.API.Controllers.EnrollmentsController.GetById(System.Int32,System.String)">
             <summary>Get enrollment by ID with optional expand (student, course)</summary>
         </member>
-        <member name="M:PRN232.LMS.API.Controllers.EnrollmentsController.Create(PRN232.LMS.Services.Models.Request.EnrollmentCreateRequest)">
-            <summary>Create a new enrollment</summary>
+        <member name="M:PRN232.LMS.API.Controllers.EnrollmentsController.Create(PRN232.LMS.Services.Models.Request.EnrollmentCreateRequest,System.String)">
+            <summary>Create a new enrollment (Admin Only)</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.EnrollmentsController.Update(System.Int32,PRN232.LMS.Services.Models.Request.EnrollmentUpdateRequest)">
-            <summary>Update enrollment status and date by ID</summary>
+            <summary>Update enrollment by ID (Admin Only)</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.EnrollmentsController.Delete(System.Int32)">
-            <summary>Delete enrollment by ID</summary>
+            <summary>Delete enrollment by ID (Admin Only)</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.SemestersController.GetAll(PRN232.LMS.Services.Models.Request.QueryParameters)">
-            <summary>Get all semesters with optional search, sort, paging, and expand</summary>
+            <summary>Get all semesters with optional search, sort, paging, and expand (courses)</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.SemestersController.GetById(System.Int32,System.String)">
-            <summary>Get semester by ID with optional expand (course)</summary>
+            <summary>Get semester by ID with optional expand (courses)</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.SemestersController.Create(PRN232.LMS.Services.Models.Request.SemesterCreateRequest)">
-            <summary>Create a new semester</summary>
+            <summary>Create a new semester (Admin Only)</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.SemestersController.Update(System.Int32,PRN232.LMS.Services.Models.Request.SemesterUpdateRequest)">
-            <summary>Update semester by ID</summary>
+            <summary>Update semester by ID (Admin Only)</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.SemestersController.Delete(System.Int32)">
-            <summary>Delete semester by ID</summary>
+            <summary>Delete semester by ID (Admin Only)</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.StudentsController.GetAll(PRN232.LMS.Services.Models.Request.QueryParameters)">
             <summary>Get all students with optional search, sort, paging, fields, and expand</summary>
@@ -56,28 +71,34 @@
             <summary>Get student by ID with optional expand (enrollment)</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.StudentsController.Create(PRN232.LMS.Services.Models.Request.StudentCreateRequest)">
-            <summary>Create a new student</summary>
+            <summary>Create a new student (Admin Only)</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.StudentsController.Update(System.Int32,PRN232.LMS.Services.Models.Request.StudentUpdateRequest)">
-            <summary>Update student by ID</summary>
+            <summary>Update student by ID (Admin Only)</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.StudentsController.Delete(System.Int32)">
-            <summary>Delete student by ID</summary>
+            <summary>Delete student by ID (Admin Only)</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.SubjectsController.GetAll(PRN232.LMS.Services.Models.Request.QueryParameters)">
-            <summary>Get all subjects with optional search, sort, and paging</summary>
+            <summary>Get all subjects with optional search, sort, paging</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.SubjectsController.GetById(System.Int32)">
             <summary>Get subject by ID</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.SubjectsController.Create(PRN232.LMS.Services.Models.Request.SubjectCreateRequest)">
-            <summary>Create a new subject</summary>
+            <summary>Create a new subject (Admin Only)</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.SubjectsController.Update(System.Int32,PRN232.LMS.Services.Models.Request.SubjectUpdateRequest)">
-            <summary>Update subject by ID</summary>
+            <summary>Update subject by ID (Admin Only)</summary>
         </member>
         <member name="M:PRN232.LMS.API.Controllers.SubjectsController.Delete(System.Int32)">
-            <summary>Delete subject by ID</summary>
+            <summary>Delete subject by ID (Admin Only)</summary>
+        </member>
+        <member name="M:PRN232.LMS.API.Controllers.V2.StudentsController.GetAll(PRN232.LMS.Services.Models.Request.QueryParameters)">
+            <summary>Get all students - API Version 2.0 (Includes V2 signature header and consistent wrapper)</summary>
+        </member>
+        <member name="M:PRN232.LMS.API.Controllers.V2.StudentsController.GetById(System.Int32,System.String)">
+            <summary>Get student by ID - API Version 2.0</summary>
         </member>
     </members>
 </doc>

@@ -101,6 +101,34 @@ public class CourseService : ICourseService
         return ApiResponse<bool>.Ok(true, "Course deleted successfully.");
     }
 
+    public async Task<ApiResponse<IEnumerable<StudentResponse>>> GetStudentsByCourseIdAsync(int courseId)
+    {
+        var courseExists = await _unitOfWork.Courses.AnyAsync(c => c.CourseId == courseId);
+        if (!courseExists)
+        {
+            return ApiResponse<IEnumerable<StudentResponse>>.Fail($"Course with ID {courseId} not found.");
+        }
+
+        var enrollments = await _unitOfWork.Enrollments.GetQueryable()
+            .Where(e => e.CourseId == courseId)
+            .Include(e => e.Student)
+            .ToListAsync();
+
+        var students = enrollments
+            .Select(e => e.Student)
+            .Where(s => s != null)
+            .Select(s => new StudentResponse
+            {
+                StudentId = s!.StudentId,
+                StudentCode = s.StudentCode,
+                FullName = s.FullName,
+                Email = s.Email,
+                DateOfBirth = s.DateOfBirth
+            });
+
+        return ApiResponse<IEnumerable<StudentResponse>>.Ok(students, "Students retrieved successfully.");
+    }
+
     private static CourseResponse MapToResponse(Course c, bool includeSemester, bool includeEnrollments) => new()
     {
         CourseId = c.CourseId,
@@ -121,7 +149,7 @@ public class CourseService : ICourseService
                 EnrollDate = e.EnrollDate, Status = e.Status,
                 Student = e.Student is not null ? new StudentResponse
                 {
-                    StudentId = e.Student.StudentId, FullName = e.Student.FullName, Email = e.Student.Email, DateOfBirth = e.Student.DateOfBirth
+                    StudentId = e.Student.StudentId, StudentCode = e.Student.StudentCode, FullName = e.Student.FullName, Email = e.Student.Email, DateOfBirth = e.Student.DateOfBirth
                 } : null
             })
             : null

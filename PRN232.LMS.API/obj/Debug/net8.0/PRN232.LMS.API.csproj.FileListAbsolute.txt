@@ -287,3 +287,12 @@ E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.API\obj\Debug
 E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.API\obj\Debug\net8.0\PRN232.LMS.API.genruntimeconfig.cache
 E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.API\obj\Debug\net8.0\ref\PRN232.LMS.API.dll
 E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.API\obj\Debug\net8.0\PRN232.LMS.API.sourcelink.json
+E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.API\bin\Debug\net8.0\Asp.Versioning.Abstractions.dll
+E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.API\bin\Debug\net8.0\Asp.Versioning.Http.dll
+E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.API\bin\Debug\net8.0\Asp.Versioning.Mvc.dll
+E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.API\bin\Debug\net8.0\Asp.Versioning.Mvc.ApiExplorer.dll
+E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.API\bin\Debug\net8.0\BCrypt-Net-Next.dll
+E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.API\bin\Debug\net8.0\FluentValidation.dll
+E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.API\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
+E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.API\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
+E:\FPTU\Ky8\PRN232\LAB_1\LAB1_NguyenTrongThien_SE181986\PRN232.LMS.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

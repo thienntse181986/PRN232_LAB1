@@ -1,3 +1,5 @@
+using Asp.Versioning;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PRN232.LMS.Services.Interfaces;
 using PRN232.LMS.Services.Models.Request;
@@ -6,8 +8,10 @@ using PRN232.LMS.Services.Models.Response;
 namespace PRN232.LMS.API.Controllers;
 
 [ApiController]
-[Route("api/students")]
-[Produces("application/json")]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/students")]
+[Produces("application/json", "application/xml")]
+[Authorize]
 public class StudentsController : ControllerBase
 {
     private readonly IStudentService _service;
@@ -27,14 +31,15 @@ public class StudentsController : ControllerBase
     [HttpGet("{id:int}")]
     [ProducesResponseType(typeof(ApiResponse<StudentResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<StudentResponse>), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetById(int id, [FromQuery] string? expand = null)
+    public async Task<IActionResult> GetById([FromRoute] int id, [FromQuery] string? expand = null)
     {
         var result = await _service.GetByIdAsync(id, expand);
         return result.Success ? Ok(result) : NotFound(result);
     }
 
-    /// <summary>Create a new student</summary>
+    /// <summary>Create a new student (Admin Only)</summary>
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     [ProducesResponseType(typeof(ApiResponse<StudentResponse>), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ApiResponse<StudentResponse>), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Create([FromBody] StudentCreateRequest request)
@@ -45,15 +50,16 @@ public class StudentsController : ControllerBase
         var result = await _service.CreateAsync(request);
         if (!result.Success) return BadRequest(result);
 
-        return CreatedAtAction(nameof(GetById), new { id = result.Data!.StudentId }, result);
+        return CreatedAtAction(nameof(GetById), new { id = result.Data!.StudentId, version = "1.0" }, result);
     }
 
-    /// <summary>Update student by ID</summary>
+    /// <summary>Update student by ID (Admin Only)</summary>
     [HttpPut("{id:int}")]
+    [Authorize(Roles = "Admin")]
     [ProducesResponseType(typeof(ApiResponse<StudentResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<StudentResponse>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse<StudentResponse>), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Update(int id, [FromBody] StudentUpdateRequest request)
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] StudentUpdateRequest request)
     {
         if (!ModelState.IsValid)
             return BadRequest(ApiResponse<StudentResponse>.Fail("Validation failed.", ModelState));
@@ -65,11 +71,12 @@ public class StudentsController : ControllerBase
         return Ok(result);
     }
 
-    /// <summary>Delete student by ID</summary>
+    /// <summary>Delete student by ID (Admin Only)</summary>
     [HttpDelete("{id:int}")]
+    [Authorize(Roles = "Admin")]
     [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Delete(int id)
+    public async Task<IActionResult> Delete([FromRoute] int id)
     {
         var result = await _service.DeleteAsync(id);
         return result.Success ? Ok(result) : NotFound(result);

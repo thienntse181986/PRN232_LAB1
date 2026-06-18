@@ -4282,9 +4282,17 @@ namespace PRN232.LMS.Repositories.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("StudentCode")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
                     b.HasKey("StudentId");
 
                     b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.HasIndex("StudentCode")
                         .IsUnique();
 
                     b.ToTable("Students");
@@ -4295,350 +4303,400 @@ namespace PRN232.LMS.Repositories.Migrations
                             StudentId = 1,
                             DateOfBirth = new DateTime(2001, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181901@fpt.edu.vn",
-                            FullName = "Nguyen An"
+                            FullName = "Nguyen An",
+                            StudentCode = "SE181901"
                         },
                         new
                         {
                             StudentId = 2,
                             DateOfBirth = new DateTime(2001, 7, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181902@fpt.edu.vn",
-                            FullName = "Tran Binh"
+                            FullName = "Tran Binh",
+                            StudentCode = "SE181902"
                         },
                         new
                         {
                             StudentId = 3,
                             DateOfBirth = new DateTime(2002, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181903@fpt.edu.vn",
-                            FullName = "Le Cuong"
+                            FullName = "Le Cuong",
+                            StudentCode = "SE181903"
                         },
                         new
                         {
                             StudentId = 4,
                             DateOfBirth = new DateTime(2001, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181904@fpt.edu.vn",
-                            FullName = "Pham Dung"
+                            FullName = "Pham Dung",
+                            StudentCode = "SE181904"
                         },
                         new
                         {
                             StudentId = 5,
                             DateOfBirth = new DateTime(2002, 9, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181905@fpt.edu.vn",
-                            FullName = "Hoang Em"
+                            FullName = "Hoang Em",
+                            StudentCode = "SE181905"
                         },
                         new
                         {
                             StudentId = 6,
                             DateOfBirth = new DateTime(2001, 11, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181906@fpt.edu.vn",
-                            FullName = "Ngo Hai"
+                            FullName = "Ngo Hai",
+                            StudentCode = "SE181906"
                         },
                         new
                         {
                             StudentId = 7,
                             DateOfBirth = new DateTime(2002, 6, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181907@fpt.edu.vn",
-                            FullName = "Do Khanh"
+                            FullName = "Do Khanh",
+                            StudentCode = "SE181907"
                         },
                         new
                         {
                             StudentId = 8,
                             DateOfBirth = new DateTime(2001, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181908@fpt.edu.vn",
-                            FullName = "Ly Lan"
+                            FullName = "Ly Lan",
+                            StudentCode = "SE181908"
                         },
                         new
                         {
                             StudentId = 9,
                             DateOfBirth = new DateTime(2002, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181909@fpt.edu.vn",
-                            FullName = "Dang Mai"
+                            FullName = "Dang Mai",
+                            StudentCode = "SE181909"
                         },
                         new
                         {
                             StudentId = 10,
                             DateOfBirth = new DateTime(2001, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181910@fpt.edu.vn",
-                            FullName = "Bui Nam"
+                            FullName = "Bui Nam",
+                            StudentCode = "SE181910"
                         },
                         new
                         {
                             StudentId = 11,
                             DateOfBirth = new DateTime(2002, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181911@fpt.edu.vn",
-                            FullName = "Nguyen Oanh"
+                            FullName = "Nguyen Oanh",
+                            StudentCode = "SE181911"
                         },
                         new
                         {
                             StudentId = 12,
                             DateOfBirth = new DateTime(2001, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181912@fpt.edu.vn",
-                            FullName = "Tran Phuong"
+                            FullName = "Tran Phuong",
+                            StudentCode = "SE181912"
                         },
                         new
                         {
                             StudentId = 13,
                             DateOfBirth = new DateTime(2002, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181913@fpt.edu.vn",
-                            FullName = "Le Quang"
+                            FullName = "Le Quang",
+                            StudentCode = "SE181913"
                         },
                         new
                         {
                             StudentId = 14,
                             DateOfBirth = new DateTime(2001, 10, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181914@fpt.edu.vn",
-                            FullName = "Pham Son"
+                            FullName = "Pham Son",
+                            StudentCode = "SE181914"
                         },
                         new
                         {
                             StudentId = 15,
                             DateOfBirth = new DateTime(2002, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181915@fpt.edu.vn",
-                            FullName = "Hoang Tam"
+                            FullName = "Hoang Tam",
+                            StudentCode = "SE181915"
                         },
                         new
                         {
                             StudentId = 16,
                             DateOfBirth = new DateTime(2001, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181916@fpt.edu.vn",
-                            FullName = "Ngo Uyen"
+                            FullName = "Ngo Uyen",
+                            StudentCode = "SE181916"
                         },
                         new
                         {
                             StudentId = 17,
                             DateOfBirth = new DateTime(2002, 7, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181917@fpt.edu.vn",
-                            FullName = "Do Van"
+                            FullName = "Do Van",
+                            StudentCode = "SE181917"
                         },
                         new
                         {
                             StudentId = 18,
                             DateOfBirth = new DateTime(2001, 9, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181918@fpt.edu.vn",
-                            FullName = "Ly Xuan"
+                            FullName = "Ly Xuan",
+                            StudentCode = "SE181918"
                         },
                         new
                         {
                             StudentId = 19,
                             DateOfBirth = new DateTime(2002, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181919@fpt.edu.vn",
-                            FullName = "Dang Yen"
+                            FullName = "Dang Yen",
+                            StudentCode = "SE181919"
                         },
                         new
                         {
                             StudentId = 20,
                             DateOfBirth = new DateTime(2001, 8, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181920@fpt.edu.vn",
-                            FullName = "Bui Zung"
+                            FullName = "Bui Zung",
+                            StudentCode = "SE181920"
                         },
                         new
                         {
                             StudentId = 21,
                             DateOfBirth = new DateTime(2003, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181921@fpt.edu.vn",
-                            FullName = "Nguyen Anh"
+                            FullName = "Nguyen Anh",
+                            StudentCode = "SE181921"
                         },
                         new
                         {
                             StudentId = 22,
                             DateOfBirth = new DateTime(2002, 11, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181922@fpt.edu.vn",
-                            FullName = "Tran Bach"
+                            FullName = "Tran Bach",
+                            StudentCode = "SE181922"
                         },
                         new
                         {
                             StudentId = 23,
                             DateOfBirth = new DateTime(2003, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181923@fpt.edu.vn",
-                            FullName = "Le Chi"
+                            FullName = "Le Chi",
+                            StudentCode = "SE181923"
                         },
                         new
                         {
                             StudentId = 24,
                             DateOfBirth = new DateTime(2002, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181924@fpt.edu.vn",
-                            FullName = "Pham Dat"
+                            FullName = "Pham Dat",
+                            StudentCode = "SE181924"
                         },
                         new
                         {
                             StudentId = 25,
                             DateOfBirth = new DateTime(2003, 9, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181925@fpt.edu.vn",
-                            FullName = "Hoang Duc"
+                            FullName = "Hoang Duc",
+                            StudentCode = "SE181925"
                         },
                         new
                         {
                             StudentId = 26,
                             DateOfBirth = new DateTime(2002, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181926@fpt.edu.vn",
-                            FullName = "Ngo Giang"
+                            FullName = "Ngo Giang",
+                            StudentCode = "SE181926"
                         },
                         new
                         {
                             StudentId = 27,
                             DateOfBirth = new DateTime(2003, 7, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181927@fpt.edu.vn",
-                            FullName = "Do Hoa"
+                            FullName = "Do Hoa",
+                            StudentCode = "SE181927"
                         },
                         new
                         {
                             StudentId = 28,
                             DateOfBirth = new DateTime(2002, 10, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181928@fpt.edu.vn",
-                            FullName = "Ly Hung"
+                            FullName = "Ly Hung",
+                            StudentCode = "SE181928"
                         },
                         new
                         {
                             StudentId = 29,
                             DateOfBirth = new DateTime(2003, 5, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181929@fpt.edu.vn",
-                            FullName = "Dang Long"
+                            FullName = "Dang Long",
+                            StudentCode = "SE181929"
                         },
                         new
                         {
                             StudentId = 30,
                             DateOfBirth = new DateTime(2002, 12, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181930@fpt.edu.vn",
-                            FullName = "Bui Minh"
+                            FullName = "Bui Minh",
+                            StudentCode = "SE181930"
                         },
                         new
                         {
                             StudentId = 31,
                             DateOfBirth = new DateTime(2003, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181931@fpt.edu.vn",
-                            FullName = "Nguyen Nga"
+                            FullName = "Nguyen Nga",
+                            StudentCode = "SE181931"
                         },
                         new
                         {
                             StudentId = 32,
                             DateOfBirth = new DateTime(2002, 8, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181932@fpt.edu.vn",
-                            FullName = "Tran Nhat"
+                            FullName = "Tran Nhat",
+                            StudentCode = "SE181932"
                         },
                         new
                         {
                             StudentId = 33,
                             DateOfBirth = new DateTime(2003, 6, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181933@fpt.edu.vn",
-                            FullName = "Le Phuc"
+                            FullName = "Le Phuc",
+                            StudentCode = "SE181933"
                         },
                         new
                         {
                             StudentId = 34,
                             DateOfBirth = new DateTime(2002, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181934@fpt.edu.vn",
-                            FullName = "Pham Quan"
+                            FullName = "Pham Quan",
+                            StudentCode = "SE181934"
                         },
                         new
                         {
                             StudentId = 35,
                             DateOfBirth = new DateTime(2003, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181935@fpt.edu.vn",
-                            FullName = "Hoang Sang"
+                            FullName = "Hoang Sang",
+                            StudentCode = "SE181935"
                         },
                         new
                         {
                             StudentId = 36,
                             DateOfBirth = new DateTime(2002, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181936@fpt.edu.vn",
-                            FullName = "Ngo Thanh"
+                            FullName = "Ngo Thanh",
+                            StudentCode = "SE181936"
                         },
                         new
                         {
                             StudentId = 37,
                             DateOfBirth = new DateTime(2003, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181937@fpt.edu.vn",
-                            FullName = "Do Thi"
+                            FullName = "Do Thi",
+                            StudentCode = "SE181937"
                         },
                         new
                         {
                             StudentId = 38,
                             DateOfBirth = new DateTime(2002, 7, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181938@fpt.edu.vn",
-                            FullName = "Ly Thu"
+                            FullName = "Ly Thu",
+                            StudentCode = "SE181938"
                         },
                         new
                         {
                             StudentId = 39,
                             DateOfBirth = new DateTime(2003, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181939@fpt.edu.vn",
-                            FullName = "Dang Toan"
+                            FullName = "Dang Toan",
+                            StudentCode = "SE181939"
                         },
                         new
                         {
                             StudentId = 40,
                             DateOfBirth = new DateTime(2002, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181940@fpt.edu.vn",
-                            FullName = "Bui Trung"
+                            FullName = "Bui Trung",
+                            StudentCode = "SE181940"
                         },
                         new
                         {
                             StudentId = 41,
                             DateOfBirth = new DateTime(2003, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181941@fpt.edu.vn",
-                            FullName = "Nguyen Tu Anh"
+                            FullName = "Nguyen Tu Anh",
+                            StudentCode = "SE181941"
                         },
                         new
                         {
                             StudentId = 42,
                             DateOfBirth = new DateTime(2002, 5, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181942@fpt.edu.vn",
-                            FullName = "Tran Tuyet Nhi"
+                            FullName = "Tran Tuyet Nhi",
+                            StudentCode = "SE181942"
                         },
                         new
                         {
                             StudentId = 43,
                             DateOfBirth = new DateTime(2003, 12, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181943@fpt.edu.vn",
-                            FullName = "Le Quoc Anh"
+                            FullName = "Le Quoc Anh",
+                            StudentCode = "SE181943"
                         },
                         new
                         {
                             StudentId = 44,
                             DateOfBirth = new DateTime(2002, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181944@fpt.edu.vn",
-                            FullName = "Pham Hoang Viet"
+                            FullName = "Pham Hoang Viet",
+                            StudentCode = "SE181944"
                         },
                         new
                         {
                             StudentId = 45,
                             DateOfBirth = new DateTime(2003, 6, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181945@fpt.edu.vn",
-                            FullName = "Hoang Kim Chi"
+                            FullName = "Hoang Kim Chi",
+                            StudentCode = "SE181945"
                         },
                         new
                         {
                             StudentId = 46,
                             DateOfBirth = new DateTime(2002, 11, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181946@fpt.edu.vn",
-                            FullName = "Ngo Thanh Nhan"
+                            FullName = "Ngo Thanh Nhan",
+                            StudentCode = "SE181946"
                         },
                         new
                         {
                             StudentId = 47,
                             DateOfBirth = new DateTime(2003, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181947@fpt.edu.vn",
-                            FullName = "Do Bao Dan"
+                            FullName = "Do Bao Dan",
+                            StudentCode = "SE181947"
                         },
                         new
                         {
                             StudentId = 48,
                             DateOfBirth = new DateTime(2002, 10, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181948@fpt.edu.vn",
-                            FullName = "Ly Thanh Tam"
+                            FullName = "Ly Thanh Tam",
+                            StudentCode = "SE181948"
                         },
                         new
                         {
                             StudentId = 49,
                             DateOfBirth = new DateTime(2003, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181949@fpt.edu.vn",
-                            FullName = "Dang Van Hieu"
+                            FullName = "Dang Van Hieu",
+                            StudentCode = "SE181949"
                         },
                         new
                         {
                             StudentId = 50,
                             DateOfBirth = new DateTime(2002, 7, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "SE181950@fpt.edu.vn",
-                            FullName = "Bui Khanh Linh"
+                            FullName = "Bui Khanh Linh",
+                            StudentCode = "SE181950"
                         });
                 });
 
@@ -4737,6 +4795,52 @@ namespace PRN232.LMS.Repositories.Migrations
                             Credit = 3,
                             SubjectCode = "ENW492",
                             SubjectName = "English for IT Professionals"
+                        });
+                });
+
+            modelBuilder.Entity("PRN232.LMS.Repositories.Entities.User", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RefreshTokenExpiryTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("UserId");
+
+                    b.HasIndex("Username")
+                        .IsUnique();
+
+                    b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            PasswordHash = "$2a$11$w8R7e974e4h.QfV1x7tDLeWqR50YV5t0j3W7H5Z8.H8wW6nC2tIeC",
+                            Role = "Admin",
+                            Username = "admin"
                         });
                 });
 
